@@ -1,33 +1,44 @@
 import './App.css'
-import Login from './Login'
-import Signup from './Signup'
+
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
+
+import Home from './pages/Home'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
+import FlightSearch from './pages/FlightSearch'
+import FlightDetails from './pages/FlightDetails'
+import Contact from './pages/Contact'
+
 function App() {
   return (
-    <div>
+    <BrowserRouter>
+
       <nav>
         <h2>Flight Status Tracker</h2>
 
         <ul>
-          <li>Home</li>
-          <li>Login</li>
-          <li>Sign Up</li>
-          <li>Flights</li>
-          <li>Contact</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/login">Login</Link></li>
+          <li><Link to="/signup">Sign Up</Link></li>
+          <li><Link to="/flights">Flights</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
         </ul>
       </nav>
 
-      <hr />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/flights" element={<FlightSearch />} />
+        <Route path="/details" element={<FlightDetails />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
 
-      <h1>Welcome to Flight Status Tracker</h1>
+      <footer>
+        © 2026 FlightStatusTracker. All Rights Reserved
+      </footer>
 
-      <p>
-        Track live flight information quickly and easily.
-      </p>
-
-      <button>Check Flights</button>
-      <Login />
-      <Signup />
-    </div>
+    </BrowserRouter>
   )
 }
 
